@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const validator = require("validator");
+const mongoose = require('mongoose');
+const validator = require('validator');
 
 const articleSchema = new mongoose.Schema({
   keyword: {
@@ -42,12 +42,12 @@ const articleSchema = new mongoose.Schema({
   },
   owner: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "user",
+    ref: 'user',
     required: true,
     minlength: 2,
     maxlength: 30,
-    select: "false",
+    select: 'false',
   },
 });
 
-module.exports = mongoose.model("article", articleSchema);
+module.exports = mongoose.model('article', articleSchema);

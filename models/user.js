@@ -1,10 +1,10 @@
-const mongoose = require("mongoose");
-const validator = require("validator");
+const mongoose = require('mongoose');
+const validator = require('validator');
 
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    default: "Colin (winking face)",
+    default: 'Colin (winking face)',
     minlength: 2,
     maxlength: 30,
   },
@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema({
       validator(v) {
         return validator.isEmail(v);
       },
-      message: "Invalid email",
+      message: 'Invalid email',
     },
   },
   password: {
@@ -27,4 +27,4 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("user", userSchema);
+module.exports = mongoose.model('user', userSchema);
