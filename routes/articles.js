@@ -11,7 +11,7 @@ function validateUrl(string) {
 }
 
 router.get(
-  '/articles',
+  '/',
   celebrate({
     body: Joi.object().keys({
       keyword: Joi.string().required(),
@@ -23,11 +23,11 @@ router.get(
       image: Joi.string().required().custom(validateUrl),
     }),
   }),
-  getArticles,
+  getArticles
 );
 
 router.post(
-  '/articles',
+  '/',
   celebrate({
     body: Joi.object().keys({
       keyword: Joi.string().required(),
@@ -39,15 +39,17 @@ router.post(
       image: Joi.string().required().custom(validateUrl),
     }),
   }),
-  createArticle,
+  createArticle
 );
 
 router.delete(
-  '/articles/:id',
+  '/:id',
   celebrate({
     body: Joi.object().keys({
       _id: Joi.string().hex().length(24),
     }),
   }),
-  deleteArticle,
+  deleteArticle
 );
+
+module.exports = router;
