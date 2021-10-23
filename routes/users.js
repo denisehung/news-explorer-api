@@ -11,5 +11,7 @@ router.get(
       password: Joi.string().required(),
     }),
   }),
-  getCurrentUser,
+  getCurrentUser
 );
+
+module.exports = router;

@@ -37,7 +37,7 @@ app.use(limiter);
 
 app.post('/signin', login);
 
-app.post('signup', createUser);
+app.post('/signup', createUser);
 
 app.use(auth);
 
@@ -45,7 +45,7 @@ app.use('/users', usersRouter);
 
 app.use('/articles', articlesRouter);
 
-app.get('*', (req, res) => {
+app.get('*', () => {
   throw new NotFoundError('Requested resource not found');
 });
 
