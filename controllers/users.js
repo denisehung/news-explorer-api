@@ -4,6 +4,7 @@ const User = require('../models/user');
 const NotFoundError = require('../errors/NotFoundError');
 const AuthorizationError = require('../errors/AuthorizationError');
 const { notAuthorized, userNotFound } = require('../utils/constants');
+const { privateKey } = require('../utils/configuration');
 
 const { NODE_ENV, JWT_SECRET } = process.env;
 
@@ -37,7 +38,7 @@ module.exports.login = (req, res, next) => {
       }
       const token = jwt.sign(
         { _id: user._id },
-        NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key',
+        NODE_ENV === 'production' ? JWT_SECRET : privateKey,
         { expiresIn: '7d' }
       );
       res.send({ token });
