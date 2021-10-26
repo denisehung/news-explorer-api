@@ -4,7 +4,7 @@ const validator = require('validator');
 const { getArticles, createArticle, deleteArticle } = require('../controllers/articles');
 
 function validateUrl(string) {
-  if (!validator.isUrl(string)) {
+  if (!validator.isURL(string)) {
     throw new Error('Invalid URL');
   }
   return string;
@@ -37,6 +37,7 @@ router.post(
       source: Joi.string().required(),
       link: Joi.string().required().custom(validateUrl),
       image: Joi.string().required().custom(validateUrl),
+      _id: Joi.string(),
     }),
   }),
   createArticle

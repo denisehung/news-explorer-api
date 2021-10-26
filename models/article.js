@@ -27,7 +27,7 @@ const articleSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator(v) {
-        return validator.isUrl(v);
+        return validator.isURL(v);
       },
     },
   },
@@ -36,7 +36,7 @@ const articleSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator(v) {
-        return validator.isUrl(v);
+        return validator.isURL(v);
       },
     },
   },
@@ -47,6 +47,7 @@ const articleSchema = new mongoose.Schema({
     minlength: 2,
     maxlength: 30,
     select: 'false',
+    default: '',
   },
 });
 
