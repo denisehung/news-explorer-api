@@ -10,7 +10,6 @@ const usersRouter = require('./routes/users');
 const articlesRouter = require('./routes/articles');
 const { login, createUser } = require('./controllers/users');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const { MONGO_SERVER } = require('./utils/configuration');
 const limiter = require('./middlewares/limiter');
 const auth = require('./middlewares/auth');
 const NotFoundError = require('./errors/NotFoundError');
@@ -23,7 +22,7 @@ app.options('*', cors());
 
 const { PORT = 3000 } = process.env;
 
-mongoose.connect(MONGO_SERVER);
+mongoose.connect('mongodb://localhost:27017/news-explorer');
 
 app.use(helmet());
 app.use(express.json());
