@@ -4,6 +4,8 @@ const bcrypt = require('bcryptjs');
 const User = require('../models/user');
 const NotFoundError = require('../errors/NotFoundError');
 const AuthorizationError = require('../errors/AuthorizationError');
+const { notAuthorized, userNotFound } = require('../utils/constants');
+const { privateKey } = require('../utils/configuration');
 
 const { NODE_ENV, JWT_SECRET } = process.env;
 
@@ -31,11 +33,11 @@ module.exports.login = (req, res, next) => {
   return User.findUserByCredentials(email, password)
     .then((user) => {
       if (!user) {
-        throw new AuthorizationError('Not Authorized');
+        throw new AuthorizationError(notAuthorized);
       }
       const token = jwt.sign(
         { _id: user._id },
-        NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key',
+        NODE_ENV === 'production' ? JWT_SECRET : privateKey,
         { expiresIn: '7d' }
       );
       res.send({ token });
@@ -44,13 +46,11 @@ module.exports.login = (req, res, next) => {
 };
 
 module.exports.getCurrentUser = (req, res, next) => {
-  User.findById(req.user._id)
-    .then((user) => {
-      if (!user) {
-        throw new NotFoundError('User could not be found!');
-      } else {
-        return res.status(200).send({ user });
-      }
-    })
-    .catch(next);
+  User.findById(req.user._id).then((user) => {
+    if (!user) {
+      throw new NotFoundError(userNotFound);
+    } else {
+      return res.status(200).send({ user });
+    }
+  });
 };
