@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const User = require('../models/user');
@@ -9,15 +10,13 @@ const { privateKey } = require('../utils/configuration');
 const { NODE_ENV, JWT_SECRET } = process.env;
 
 module.exports.createUser = (req, res, next) => {
-  const { name, about, avatar, email, password } = req.body;
+  const { name, email, password } = req.body;
 
   bcrypt
     .hash(password, 10)
     .then((hash) =>
       User.create({
         name,
-        about,
-        avatar,
         email,
         password: hash,
       })

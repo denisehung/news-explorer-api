@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
 const express = require('express');
 const mongoose = require('mongoose');
 const helmet = require('helmet');

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
 const Article = require('../models/article');
 const NotFoundError = require('../errors/NotFoundError');
@@ -11,9 +12,9 @@ module.exports.getArticles = (req, res, next) => {
 };
 
 module.exports.createArticle = (req, res, next) => {
-  const { name } = req.body;
+  const { keyword, title, text, date, source, link, image } = req.body;
 
-  Article.create({ name, owner: req.user._id })
+  Article.create({ keyword, title, text, date, source, link, image })
     .then((article) => res.status(200).send({ article }))
     .catch(next);
 };
@@ -30,3 +31,6 @@ module.exports.deleteArticle = (req, res, next) => {
     })
     .catch(next);
 };
+
+
+// owner: req.user._id
