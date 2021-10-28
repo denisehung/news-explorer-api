@@ -10,19 +10,20 @@ const usersRouter = require('./routes/users');
 const articlesRouter = require('./routes/articles');
 const { login, createUser } = require('./controllers/users');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const limiter = require('./middlewares/limiter');
+const { limiter } = require('./middlewares/limiter');
 const auth = require('./middlewares/auth');
 const NotFoundError = require('./errors/NotFoundError');
 const ConflictError = require('./errors/ConflictError');
+const { database } = require('./utils/configuration');
 
 const app = express();
 
 app.use(cors());
 app.options('*', cors());
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3000, NODE_ENV, MONGO_URL } = process.env;
 
-mongoose.connect('mongodb://localhost:27017/news-explorer');
+mongoose.connect(NODE_ENV === 'production' ? MONGO_URL : database);
 
 app.use(helmet());
 app.use(express.json());
