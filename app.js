@@ -3,7 +3,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
-const rateLimit = require('express-rate-limit');
 const cors = require('cors');
 require('dotenv').config();
 const { errors } = require('celebrate');
@@ -11,6 +10,7 @@ const usersRouter = require('./routes/users');
 const articlesRouter = require('./routes/articles');
 const { login, createUser } = require('./controllers/users');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const limiter = require('./middlewares/limiter');
 const auth = require('./middlewares/auth');
 const NotFoundError = require('./errors/NotFoundError');
 const ConflictError = require('./errors/ConflictError');
@@ -21,10 +21,6 @@ app.use(cors());
 app.options('*', cors());
 
 const { PORT = 3000 } = process.env;
-const limiter = rateLimit({
-  windowMs: 1 * 60 * 1000,
-  max: 500,
-});
 
 mongoose.connect('mongodb://localhost:27017/news-explorer');
 

@@ -2,6 +2,7 @@
 const Article = require('../models/article');
 const NotFoundError = require('../errors/NotFoundError');
 const ForbiddenError = require('../errors/ForbiddenError');
+const { forbidden, articleNotFound } = require('../utils/constants');
 
 module.exports.getArticles = (req, res, next) => {
   Article.find({})
@@ -21,9 +22,9 @@ module.exports.deleteArticle = (req, res, next) => {
   Article.findByIdAndRemove(req.params.id)
     .then((article) => {
       if (!article) {
-        throw new NotFoundError('Article could not be found!');
+        throw new NotFoundError(articleNotFound);
       } else if (article.owner.toString() !== req.user._id) {
-        throw new ForbiddenError("That's not yours to touch!");
+        throw new ForbiddenError(forbidden);
       }
       res.status(200).send({ article });
     })
