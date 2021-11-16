@@ -9,7 +9,7 @@ const usersRouter = require('./routes/users');
 const articlesRouter = require('./routes/articles');
 const { login, createUser } = require('./controllers/users');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const { limiter } = require('./middlewares/limiter');
+// const { limiter } = require('./middlewares/limiter');
 const auth = require('./middlewares/auth');
 const NotFoundError = require('./errors/NotFoundError');
 const ConflictError = require('./errors/ConflictError');
@@ -29,7 +29,7 @@ app.use(express.json());
 
 app.use(requestLogger);
 
-app.use(limiter);
+// app.use(limiter);
 
 app.post('/signin', login);
 
