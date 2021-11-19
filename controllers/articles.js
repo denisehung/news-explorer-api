@@ -7,7 +7,7 @@ const { forbidden, articleNotFound } = require('../utils/constants');
 
 module.exports.getArticles = (req, res, next) => {
   Article.find({})
-    .then((articles) => res.status(200).send(articles))
+    .then((articles) => res.status(200).send({ articles }))
     .catch(next);
 };
 
