@@ -6,10 +6,10 @@ const ForbiddenError = require('../errors/ForbiddenError');
 const { forbidden, articleNotFound } = require('../utils/constants');
 
 module.exports.getArticles = (req, res, next) => {
-  Article.find({})
+  Article.find({ owner: req.user._id })
     .then((articles) => res.status(200).send({ articles }))
     .catch(next);
-};
+}
 
 module.exports.createArticle = (req, res, next) => {
   const { keyword, title, text, date, source, link, image } = req.body;
