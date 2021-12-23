@@ -1,11 +1,3 @@
-# news-explorer-api
-Backend for News Explorer, final project of Practicum by Yandex Web Development bootcamp.  
-Created by [Colin Maretsky](https://github.com/cjmaret) and [Denise Hung](https://github.com/denisehung)  
-
-The API is hosted here:  
-[https://api.aloha.students.nomoreparties.site](https://api.aloha.students.nomoreparties.site)
-
-
 # 📰News Explorer Back End📰
 
 ## Project Description / Functionality: 
@@ -13,6 +5,8 @@ The API is hosted here:
 - The controllers handle user creation, login, and getting user data, as well as saving, getting, and deleting articles based on user actions
 - Data is stored on and retrieved from Google Cloud
 - Site features include centralized error handling, authorization middleware, and environment variables
+
+---
 
 ## Project Technologies/Techniques:
 - Mongoose
@@ -23,9 +17,21 @@ The API is hosted here:
 - Dotenv
 - Bcryptjs
 
+---
+
+## Team 
+- [Denise Hung](https://github.com/denisehung) - [LinkedIn](https://www.linkedin.com/in/denise-hung-76563867/)
+- [Colin Maretsky](https://github.com/cjmaret) - [LinkedIn](https://www.linkedin.com/in/colin-maretsky/)
+
+---
+
+## Links
 ### ➡️ [GitHub Link](https://github.com/cjmaret/news-explorer-api)
 ### ➡️ [Link to News Explorer Front End](https://github.com/cjmaret/news-explorer-frontend)
 ### ➡️ [Link to News Explorer Live Site](https://news-explorer-site.netlify.app/)
+### ➡️ [API](https://api.aloha.students.nomoreparties.site)
+
+---
 
 ## ✨ Demo
 ![news-ex-homepage](https://user-images.githubusercontent.com/77926563/147211537-04034d29-b1b7-410f-9d2a-f0ed0248f5f5.png)
