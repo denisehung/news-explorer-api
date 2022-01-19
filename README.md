@@ -29,7 +29,7 @@
 ### ➡️ [GitHub Link](https://github.com/cjmaret/news-explorer-api)
 ### ➡️ [Link to News Explorer Front End](https://github.com/cjmaret/news-explorer-frontend)
 ### ➡️ [Link to News Explorer Live Site](https://news-explorer-site.netlify.app/)
-### ➡️ [API](https://api.aloha.students.nomoreparties.site)
+### ➡️ [API](https://api.aloha.students.nomoreparties.sbs)
 
 ---
 
@@ -41,4 +41,3 @@
 
 ### Saved Articles
 ![news-ex-saved](https://user-images.githubusercontent.com/77926563/147217849-46dcecac-1f03-41b6-aab0-ca9cbc7ad78c.png)
-
